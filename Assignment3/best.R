@@ -14,6 +14,7 @@ best <- function(state, outcome) {
   }
   
   rv <- c()
+  hp <- content[content$State == state,]
   if (outcome == 'heart attack') {
     rv <- content[content$State == state,][[11]]
   } else if (outcome == 'heart failure') {
@@ -25,6 +26,6 @@ best <- function(state, outcome) {
   min_val<- min(rv, na.rm=TRUE)
   index <- match(min_val,rv)
 
-  hospital_names <- as.character(content[[2]])[index]
+  hospital_names <- as.character(hp[[2]])[index]
   sort(hospital_names)[1]
 }

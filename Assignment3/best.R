@@ -24,7 +24,7 @@ best <- function(state, outcome) {
   }  
   rv <- suppressWarnings(as.numeric(as.character(rv)))
   min_val<- min(rv, na.rm=TRUE)
-  index <- match(min_val,rv)
+  index <- which(rv %in% c(min_val))
 
   hospital_names <- as.character(hp[[2]])[index]
   sort(hospital_names)[1]
